@@ -5,3 +5,7 @@
 <p *ngIf="serverCreated; else noServer">{{serverCreationStatus}}</p>
 <ng-template #noServer><p>No server created!</p></ng-template>
 <app-server *ngFor="let server of servers"></app-server>
+
+<ul>
+    <li *ngFor="let server of servers; let i = index">{{i}} {{server}}</li>
+</ul>
