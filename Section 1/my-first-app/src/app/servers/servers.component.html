@@ -1,3 +1,6 @@
+<label for="serverName">Server Name</label>
+<input type="text" id="serverName" class="form-control" (input)="onUpdateServerName($event)">
+<p>{{serverName}}</p>
 <p>I am Servers Component.</p>
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
 <p>{{serverCreationStatus}}</p>
