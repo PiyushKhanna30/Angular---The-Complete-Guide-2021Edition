@@ -1,3 +1,5 @@
 <p>I am Servers Component.</p>
 <button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>
+<p>This is string interpolation {{allowNewServer}}. Use when you need to add on string. When you need to change all text use property binding (like below).</p>
+<p [innerHTML]='allowNewServer'></p>
 <app-server></app-server>
