@@ -21,4 +21,7 @@ export class AppComponent {
       content: blueprintData.serverContent
     });
   }
+  changeServerName():void{
+    this.serverElements[0].name="Name Changed";
+  }
 }
