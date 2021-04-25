@@ -12,5 +12,6 @@ export class AccountComponent {
   constructor(private accountService: AccountService) { }
   onSetTo(status: string) {
     this.accountService.updateStatus(this.id, status);
+    this.accountService.statusUpdated.emit(status);
   }
 }
