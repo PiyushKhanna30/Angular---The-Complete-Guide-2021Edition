@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { relative } from 'node:path';
 
 import { ServersService } from '../servers.service';
 
@@ -26,7 +27,7 @@ export class ServerComponent implements OnInit {
     const id:number = +this.route.snapshot.queryParams['allowEdit'];
     console.log(id);
     if(id==1){
-      this.router.navigate(['/servers',id, 'edit']);
+      this.router.navigate(['edit'], {relativeTo:this.route, queryParamsHandling:'preserve'});
     }
   }
 
