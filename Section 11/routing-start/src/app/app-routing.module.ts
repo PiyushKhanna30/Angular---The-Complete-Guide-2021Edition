@@ -14,12 +14,12 @@ import { UsersComponent } from "./users/users.component";
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     {
-        path: 'users', component: UsersComponent, children: [
+        path: 'users', canActivateChild: [AuthGaurd], component: UsersComponent, children: [
             { path: ':id/:name', component: UserComponent },
         ]
     },
     {
-        path: 'servers', canActivate:[AuthGaurd], component: ServersComponent, children: [
+        path: 'servers', canActivate: [AuthGaurd], component: ServersComponent, children: [
             { path: ':id/edit', component: EditServerComponent },
             { path: ':id', component: ServerComponent },
         ]
