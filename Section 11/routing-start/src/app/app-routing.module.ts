@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { CanDeactivateGaurd } from "./servers/edit-server/can-deactivate-gaurd.service";
 import { EditServerComponent } from "./servers/edit-server/edit-server.component";
 import { ServerComponent } from "./servers/server/server.component";
 import { ServersComponent } from "./servers/servers.component";
@@ -20,7 +21,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'servers', canActivate: [AuthGaurd], component: ServersComponent, children: [
-            { path: ':id/edit', component: EditServerComponent },
+            { path: ':id/edit', component: EditServerComponent, canDeactivate:[CanDeactivateGaurd] },
             { path: ':id', component: ServerComponent },
         ]
     },
