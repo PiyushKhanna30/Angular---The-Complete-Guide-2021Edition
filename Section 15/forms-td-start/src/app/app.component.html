@@ -26,6 +26,9 @@
           <textarea class="form-control" [(ngModel)]="answere" name="secretAnswere"></textarea>
           <p>Your text {{answere}}</p>
         </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label><input type="radio" name="gender" ngModel [value]="gender" required>{{gender}}</label>
+        </div>
         <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Submit</button>
       </form>
     </div>
