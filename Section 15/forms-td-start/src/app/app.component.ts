@@ -13,15 +13,11 @@ export class AppComponent {
   @ViewChild('myForm', {static:true})myForm:NgForm;
   suggestUserName() {
     const suggestedName = 'Superuser';
-    this.myForm.setValue({
+    this.myForm.form.patchValue({
       userData:{
-        username:suggestedName,
-        email:''
-      },
-      secret:this.defaultOption,
-      secretAnswere:'',
-      gender:this.genders[0]
-    })
+        username:suggestedName
+      }
+    });
   }
 
   onSubmit(){
