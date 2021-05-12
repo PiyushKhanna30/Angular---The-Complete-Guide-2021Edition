@@ -40,4 +40,16 @@ export class AppComponent {
       'list-group-item-danger': server.status === 'critical'
     };
   }
+  addServer(){
+    this.servers.push({
+      instanceType:'small',
+      name:'New Server',
+      status:'stable',
+      started: new Date()
+    });
+  }
 }
+
+// NOTE try to filter and then add server.
+// You see no new servers show. because updating objects doesn't trigger pipe to re run.
+// this is good to improve performance
