@@ -53,3 +53,5 @@ export class AppComponent {
 // NOTE try to filter and then add server.
 // You see no new servers show. because updating objects doesn't trigger pipe to re run.
 // this is good to improve performance
+
+// So to update on changes add pure false in pipe decorator
