@@ -12,6 +12,7 @@ import { title } from 'process';
 })
 export class AppComponent implements OnInit {
   loadedPosts = [];
+  error = null;
   isFetching: boolean = false;
   constructor(private http: HttpClient, private postService: PostService) { }
 
@@ -24,10 +25,13 @@ export class AppComponent implements OnInit {
 
   onFetchPosts() {
     // Send Http request
+    this.error = null;
     this.isFetching = true;
     this.postService.fetchPosts().subscribe(posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
+    },error => {
+      this.error = error.message;
     });
   }
 
