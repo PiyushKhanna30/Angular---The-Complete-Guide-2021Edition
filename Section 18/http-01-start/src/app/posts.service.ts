@@ -18,6 +18,10 @@ export class PostService{
           });
     }
 
+    clearPosts(){
+        return this.http.delete('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json');
+    }
+
     fetchPosts(){
         return this.http.get<{ [key: string]: Post }>('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json')
         .pipe(map(responseData => {
