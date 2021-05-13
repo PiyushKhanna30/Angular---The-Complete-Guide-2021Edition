@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { Post } from "./post.model";
 
 
@@ -13,13 +13,21 @@ export class PostService{
     
     createAndStorePost(title:string, content:string){
         const postData:Post = {title:title, content:content};
-        this.http.post<{name:string}>('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json', postData).subscribe(responseData => {
+        this.http.post<{name:string}>('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json', postData,{
+            observe:'response' //by default body
+        }
+        ).subscribe(responseData => {
             console.log(responseData);
           });
     }
 
     clearPosts(){
-        return this.http.delete('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json');
+        return this.http.delete('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json',
+        {
+            observe:'events'
+        }).pipe(tap(event =>{
+            console.log(event);
+        }));
     }
 
     fetchPosts(){
