@@ -13,9 +13,8 @@ export class PostService{
     
     createAndStorePost(title:string, content:string){
         const postData:Post = {title:title, content:content};
-        this.http.post('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json', postData,{
-            observe:'response',
-            responseType: 'text'
+        this.http.post<{name:string}>('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json', postData,{
+            observe:'response' //by default body
         }
         ).subscribe(responseData => {
             console.log(responseData);
