@@ -13,8 +13,9 @@ export class PostService{
     
     createAndStorePost(title:string, content:string){
         const postData:Post = {title:title, content:content};
-        this.http.post<{name:string}>('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json', postData,{
-            observe:'response' //by default body
+        this.http.post('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json', postData,{
+            observe:'response',
+            responseType: 'text'
         }
         ).subscribe(responseData => {
             console.log(responseData);
@@ -24,7 +25,8 @@ export class PostService{
     clearPosts(){
         return this.http.delete('https://ng-complete-guide-43c71-default-rtdb.firebaseio.com/posts.json',
         {
-            observe:'events'
+            observe:'events',
+            responseType: 'text'//by default json. ie to render incoming data and treat it as json. blob for file
         }).pipe(tap(event =>{
             console.log(event);
         }));
